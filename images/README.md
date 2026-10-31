@@ -12,3 +12,5 @@
 <img width="1774" height="887" alt="Бугатти" src="https://github.com/user-attachments/assets/4021cc6a-87b5-43a2-b6d4-e47cae179c66" />
 <img width="1774" height="887" alt="Бугатти2" src="https://github.com/user-attachments/assets/1db5d65e-e319-4904-942e-4ad750355162" />
 <img width="1774" height="887" alt="Бугатти3" src="https://github.com/user-attachments/assets/f476915d-bf41-4b95-a4e4-144cad2c4f99" />
+<img width="1254" height="1254" alt="Обложка" src="https://github.com/user-attachments/assets/c86e677d-c9b2-4d87-a91a-4cac43cecad5" />
+<img width="1635" height="962" alt="Иконка" src="https://github.com/user-attachments/assets/10ff8cad-b5f4-4404-8bf6-cc6cbe85a53a" />
