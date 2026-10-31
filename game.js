@@ -10,12 +10,12 @@ const rarityColors = {"Обычный":"#aab3bf","Необычный":"#64c8ff",
 /* Экономика: продажа машины ВСЕГДА дешевле покупки.
    Редкий номер на машине даёт бонус к цене продажи. */
 const carCatalog = [
- {id:"sedan", name:"Городской седан", desc:"Надёжный первый автомобиль", price:18000, resale:11000, art:"assets/car-sedan.svg"},
- {id:"hatch", name:"Компактный хэтчбек", desc:"Манёвренный и экономичный", price:26500, resale:16000, art:"assets/car-hatch.svg"},
- {id:"suv",   name:"Внедорожник", desc:"Мощный автомобиль для города", price:52000, resale:32000, art:"assets/car-suv.svg"},
- {id:"sport", name:"Спорткар", desc:"Яркий стиль и высокая цена", price:95000, resale:58000, art:"assets/car-sport.svg"},
- {id:"lux",   name:"Премиум-седан", desc:"Комфорт и статус", price:145000, resale:90000, art:"assets/car-lux.svg"},
- {id:"super", name:"Суперкар", desc:"Мечта коллекционера", price:260000, resale:160000, art:"assets/car-super.svg"}
+ {id:"sedan", name:"Городской седан", desc:"Надёжный первый автомобиль", price:18000, resale:11000, art:"images/car-sedan.svg"},
+ {id:"hatch", name:"Компактный хэтчбек", desc:"Манёвренный и экономичный", price:26500, resale:16000, art:"images/car-hatch.svg"},
+ {id:"suv",   name:"Внедорожник", desc:"Мощный автомобиль для города", price:52000, resale:32000, art:"images/car-suv.svg"},
+ {id:"sport", name:"Спорткар", desc:"Яркий стиль и высокая цена", price:95000, resale:58000, art:"images/car-sport.svg"},
+ {id:"lux",   name:"Премиум-седан", desc:"Комфорт и статус", price:145000, resale:90000, art:"images/car-lux.svg"},
+ {id:"super", name:"Суперкар", desc:"Мечта коллекционера", price:260000, resale:160000, art:"images/car-super.svg"}
 ];
 
 const defaultState = {money:50000,plates:[],safe:[],cars:[],generated:0,best:0,nextId:1};
@@ -419,17 +419,55 @@ async function initYandex(){
 function fitGameToScreen(){
   const shell = document.querySelector(".app-shell");
   if(!shell) return;
-  const gw = 390;
-  const gh = 780;
-  const pad = 0;
-  const vw = window.innerWidth - pad;
-  const vh = window.innerHeight - pad;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const landscape = vw > vh;
+  const isPc = vw >= 900 || (landscape && vw >= 700 && vh >= 450);
+  document.body.classList.toggle("landscape", landscape);
+  document.body.classList.toggle("portrait", !landscape);
+  document.body.classList.toggle("is-pc", isPc);
+
+  let gw, gh;
+  if(landscape){
+    // Занимаем почти весь экран в альбоме
+    if(isPc){
+      gw = Math.min(1100, vw);
+      gh = Math.min(620, vh);
+    } else {
+      // телефон горизонтально
+      gw = Math.min(780, vw);
+      gh = Math.min(400, vh);
+    }
+    // не выходим за экран
+    const scaleFit = Math.min(vw / gw, vh / gh);
+    // после scale реальный размер = gw*scale, так что можно брать почти 100% viewport как базовый
+    gw = Math.floor(vw / scaleFit);
+    gh = Math.floor(vh / scaleFit);
+    // проще: холст = размер окна, scale = 1 в альбоме почти всегда
+    gw = vw;
+    gh = vh;
+  } else {
+    if(isPc){
+      gw = 420;
+      gh = 860;
+    } else {
+      gw = 390;
+      gh = 780;
+      if(vh >= 850){ gw = 400; gh = 820; }
+    }
+  }
+
+  shell.style.width = gw + "px";
+  shell.style.height = gh + "px";
+  shell.style.maxWidth = gw + "px";
+  shell.style.maxHeight = gh + "px";
+
   const scale = Math.min(vw / gw, vh / gh);
   shell.style.transform = "scale(" + scale + ")";
   shell.style.transformOrigin = "center center";
 }
 window.addEventListener("resize", fitGameToScreen);
-window.addEventListener("orientationchange", () => setTimeout(fitGameToScreen, 100));
+window.addEventListener("orientationchange", () => setTimeout(fitGameToScreen, 120));
 
 function init(){
  initLanguage();
