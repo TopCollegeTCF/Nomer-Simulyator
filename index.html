@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
   <meta name="theme-color" content="#10151d">
   <title>АВТОНОМЕР — игра</title>
   <link rel="stylesheet" href="style.css">
@@ -18,7 +18,8 @@
     <main>
       <nav class="tabs" aria-label="Разделы игры">
         <button class="tab active" data-tab="generator">🎲 Генератор</button>
-        <button class="tab" data-tab="cars">🚘 Автосалон</button>
+        <button class="tab" data-tab="shop">🚘 Автосалон</button>
+        <button class="tab" data-tab="garage">🚗 Гараж <i id="garage-count">0</i></button>
         <button class="tab" data-tab="storage">📦 Хранилище <i id="storage-count">0</i></button>
         <button class="tab" data-tab="safe">🔒 Сейф <i id="safe-count">0</i></button>
       </nav>
@@ -33,6 +34,7 @@
               <span class="plate-region"><b>777</b><small>RUS <span class="flag">▰</span></small></span>
             </div>
             <div class="rarity-line"><span id="rarity-dot"></span><strong id="rarity-name">Обычный номер</strong><b id="plate-price">≈ 500 ₽</b></div>
+            <p class="rarity-reason" id="rarity-reason">Нет повторяющихся или особых сочетаний — стандартный номер.</p>
             <button class="primary-btn" id="generate-btn">✦ СГЕНЕРИРОВАТЬ НОМЕР</button>
             <p class="hint">Каждая генерация — новый случайный номер и регион.</p>
           </div>
@@ -44,11 +46,14 @@
         </div>
       </section>
 
-      <section class="panel" id="panel-cars">
+      <section class="panel" id="panel-shop">
         <div class="section-heading"><div><span class="eyebrow">ПОПОЛНЯЙ АВТОПАРК</span><h2>Автосалон</h2></div><div class="chip">Покупай → улучшай → продавай</div></div>
         <div class="subheading"><h3>Машины в продаже</h3><span>Выбери свой следующий автомобиль</span></div>
         <div class="car-grid" id="shop-cars"></div>
-        <div class="subheading owned-title"><h3>Мой гараж</h3><span id="owned-count">0 автомобилей</span></div>
+      </section>
+
+      <section class="panel" id="panel-garage">
+        <div class="section-heading"><div><span class="eyebrow">ТВОЙ АВТОПАРК</span><h2>Гараж</h2></div><div class="chip" id="owned-count">0 автомобилей</div></div>
         <div class="owned-list" id="owned-cars"></div>
       </section>
 
@@ -67,6 +72,22 @@
     </main>
     <footer><span>АВТОНОМЕР</span><span>Прогресс сохраняется автоматически</span><button id="reset-btn">Сбросить игру</button></footer>
   </div>
+  
+  <div class="plate-picker" id="plate-picker" aria-hidden="true">
+    <div class="picker-backdrop" id="picker-backdrop"></div>
+    <div class="picker-sheet" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+      <div class="picker-header">
+        <div>
+          <span class="eyebrow">ВЫБОР НОМЕРА</span>
+          <h3 id="picker-title">Установить на автомобиль</h3>
+        </div>
+        <button class="picker-close" id="picker-close" type="button" aria-label="Закрыть">✕</button>
+      </div>
+      <p class="picker-hint">Выбери свободный номер из хранилища</p>
+      <div class="picker-list" id="picker-list"></div>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status"></div>
   <script src="game.js"></script>
 </body>
