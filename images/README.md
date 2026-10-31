@@ -8,3 +8,5 @@
 <img width="1774" height="887" alt="Глянцевый чёрный электромобиль Tesla на прозрачном фоне" src="https://github.com/user-attachments/assets/56f8e45d-77f7-4896-9472-75f70a924efb" />
 <img width="1672" height="941" alt="flying_tesla_transparent" src="https://github.com/user-attachments/assets/e409841d-0b61-44ed-8be5-56f1e8bc084e" />
 <img width="1774" height="887" alt="Футуристический кибертрак на прозрачном фоне" src="https://github.com/user-attachments/assets/5d657ef8-8aeb-4eb1-a7d3-dc2239ca8b00" />
+<img width="1536" height="1024" alt="Ржавый винтажный мопед RIGA" src="https://github.com/user-attachments/assets/9c273573-5f67-4477-ba94-0104b47f62db" />
+<img width="1536" height="1024" alt="red_motorcycle_transparent" src="https://github.com/user-attachments/assets/b6e70c77-016b-4286-a45d-bedc2ec8aac6" />
