@@ -619,3 +619,280 @@ footer button {
 .picker-item.rarity-rare { border-color: #b58aff66; }
 .picker-item.rarity-epic { border-color: #ffad5566; }
 .picker-item.rarity-legendary { border-color: #b8f34b77; }
+
+
+/* ===== Портрет / альбом / ПК (улучшенно) ===== */
+
+/* --- ПК общий --- */
+body.is-pc .app-shell {
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px #ffffff10, 0 20px 60px #0008;
+}
+body.is-pc .tab {
+  font-size: 11px;
+  padding: 9px 10px;
+}
+body.is-pc .section-heading h2 { font-size: 20px; }
+
+/* --- Портрет телефон --- */
+body.portrait:not(.is-pc) .tip-card { display: none; }
+body.portrait:not(.is-pc) .car-grid { grid-template-columns: 1fr 1fr; }
+body.portrait:not(.is-pc) .plate-grid { grid-template-columns: 1fr 1fr; }
+
+/* --- АЛЬБОМ: телефон --- */
+body.landscape:not(.is-pc) .app-shell {
+  padding: 4px 10px 4px;
+  border-radius: 0;
+  box-shadow: none;
+}
+body.landscape:not(.is-pc) .topbar {
+  flex: 0 0 34px;
+  height: 34px;
+}
+body.landscape:not(.is-pc) .brand-mark {
+  width: 22px; height: 22px; font-size: 12px;
+}
+body.landscape:not(.is-pc) .brand b { font-size: 10px; }
+body.landscape:not(.is-pc) .brand small { display: none; }
+body.landscape:not(.is-pc) .wallet {
+  padding: 3px 8px; font-size: 11px;
+}
+body.landscape:not(.is-pc) .tabs {
+  padding: 3px 0 4px;
+  gap: 3px;
+}
+body.landscape:not(.is-pc) .tab {
+  font-size: 7.5px;
+  padding: 4px 2px;
+  border-radius: 5px;
+  line-height: 1.1;
+}
+body.landscape:not(.is-pc) .tab i {
+  font-size: 6.5px;
+  padding: 0 2px;
+  margin-left: 0;
+}
+body.landscape:not(.is-pc) .section-heading {
+  margin: 2px 0 6px;
+}
+body.landscape:not(.is-pc) .section-heading h2 { font-size: 13px; }
+body.landscape:not(.is-pc) .eyebrow { font-size: 8px; }
+body.landscape:not(.is-pc) .chip {
+  font-size: 7px; padding: 3px 6px;
+}
+body.landscape:not(.is-pc) footer {
+  padding: 3px 0;
+  font-size: 7px;
+  margin-top: 2px;
+}
+
+/* Генератор в альбоме на телефоне — в ряд */
+body.landscape:not(.is-pc) #panel-generator.active {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow: hidden;
+}
+body.landscape:not(.is-pc) .generator-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body.landscape:not(.is-pc) .tip-card {
+  display: block;
+  padding: 10px;
+  overflow: hidden;
+}
+body.landscape:not(.is-pc) .generator-card { padding: 10px; }
+body.landscape:not(.is-pc) .plate {
+  height: 56px;
+  max-width: 280px;
+  margin-bottom: 6px;
+}
+body.landscape:not(.is-pc) .plate-main { font-size: 22px; gap: 4px; }
+body.landscape:not(.is-pc) .plate-region { width: 44px; font-size: 14px; }
+body.landscape:not(.is-pc) .rarity-reason {
+  font-size: 8px;
+  padding: 5px 6px;
+  margin-bottom: 6px;
+}
+body.landscape:not(.is-pc) .primary-btn {
+  padding: 9px;
+  font-size: 11px;
+}
+body.landscape:not(.is-pc) .hint { display: none; }
+body.landscape:not(.is-pc) .tip-card h3 { font-size: 13px; margin: 4px 0; }
+body.landscape:not(.is-pc) .tip-card p { font-size: 9px; line-height: 1.3; }
+body.landscape:not(.is-pc) .mini-stats strong { font-size: 14px; }
+body.landscape:not(.is-pc) .mini-stats span { font-size: 8px; }
+
+/* Автосалон / гараж / номера — альбом телефон */
+body.landscape:not(.is-pc) .car-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+body.landscape:not(.is-pc) .car-visual { height: 52px; }
+body.landscape:not(.is-pc) .car-info { padding: 5px; }
+body.landscape:not(.is-pc) .car-info h3 { font-size: 10px; }
+body.landscape:not(.is-pc) .car-info p { font-size: 7px; margin-bottom: 4px; }
+body.landscape:not(.is-pc) .small-btn {
+  padding: 4px 5px;
+  font-size: 8px;
+  min-height: 24px;
+}
+body.landscape:not(.is-pc) .plate-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+body.landscape:not(.is-pc) .collection-card { padding: 4px; }
+body.landscape:not(.is-pc) .collection-card .plate { height: 36px; margin-bottom: 3px; }
+body.landscape:not(.is-pc) .collection-card .plate-main { font-size: 12px; }
+body.landscape:not(.is-pc) .collection-card .plate-region { width: 28px; font-size: 10px; }
+body.landscape:not(.is-pc) .collection-reason { font-size: 7px; -webkit-line-clamp: 1; }
+body.landscape:not(.is-pc) .collection-actions .small-btn {
+  padding: 4px 2px; font-size: 7px; min-height: 22px;
+}
+body.landscape:not(.is-pc) .owned-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+body.landscape:not(.is-pc) .owned-card { padding: 6px; gap: 5px; }
+body.landscape:not(.is-pc) .owned-car-name { font-size: 11px; }
+body.landscape:not(.is-pc) .owned-meta { font-size: 8px; }
+body.landscape:not(.is-pc) .safe-banner {
+  padding: 6px; margin-bottom: 5px;
+}
+body.landscape:not(.is-pc) .safe-banner b { font-size: 10px; }
+body.landscape:not(.is-pc) .safe-banner p { font-size: 8px; }
+body.landscape:not(.is-pc) .picker-sheet {
+  width: min(100%, 100vw);
+  max-height: 92%;
+  border-radius: 12px;
+}
+body.landscape:not(.is-pc) .plate-picker { align-items: center; }
+body.landscape:not(.is-pc) .picker-list {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+/* --- АЛЬБОМ: ПК --- */
+body.landscape.is-pc .app-shell {
+  padding: 0 20px;
+}
+body.landscape.is-pc .topbar {
+  flex: 0 0 52px;
+  height: 52px;
+}
+body.landscape.is-pc .tabs {
+  padding: 8px 0;
+  gap: 8px;
+}
+body.landscape.is-pc .tab {
+  font-size: 12px;
+  padding: 10px 14px;
+}
+body.landscape.is-pc .section-heading {
+  margin: 6px 0 12px;
+}
+body.landscape.is-pc .section-heading h2 { font-size: 22px; }
+
+body.landscape.is-pc #panel-generator.active {
+  display: flex;
+  overflow: hidden;
+}
+body.landscape.is-pc .generator-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}
+body.landscape.is-pc .tip-card { display: block; }
+body.landscape.is-pc .plate {
+  height: 84px;
+  max-width: 400px;
+}
+body.landscape.is-pc .plate-main { font-size: 34px; }
+body.landscape.is-pc .plate-region { width: 60px; font-size: 22px; }
+body.landscape.is-pc .primary-btn { padding: 14px; font-size: 14px; }
+
+body.landscape.is-pc .car-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+body.landscape.is-pc .car-visual { height: 90px; }
+body.landscape.is-pc .car-info h3 { font-size: 13px; }
+body.landscape.is-pc .car-info p { font-size: 10px; }
+body.landscape.is-pc .small-btn { font-size: 11px; padding: 8px 10px; min-height: 34px; }
+
+body.landscape.is-pc .plate-grid {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+body.landscape.is-pc .collection-card .plate { height: 52px; }
+body.landscape.is-pc .collection-card .plate-main { font-size: 16px; }
+
+body.landscape.is-pc .owned-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+body.landscape.is-pc .picker-sheet {
+  width: min(920px, 92vw);
+  max-height: 80%;
+  border-radius: 14px;
+}
+body.landscape.is-pc .plate-picker { align-items: center; }
+body.landscape.is-pc .picker-list {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+
+/* Убрать растягивание контента */
+.panel.active {
+  align-content: flex-start;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+#panel-generator.active {
+  display: block !important;
+  overflow: hidden !important;
+}
+.generator-layout {
+  height: auto !important;
+  align-content: start;
+}
+.generator-card, .tip-card {
+  height: auto !important;
+  align-self: start;
+}
+.car-grid, .plate-grid, .owned-list {
+  align-content: start !important;
+  align-items: start !important;
+}
+.car-card, .collection-card, .owned-card {
+  height: auto !important;
+  align-self: start;
+}
+.car-visual {
+  flex: none;
+}
+
+/* Альбом: генератор тоже без растяга по высоте */
+body.landscape #panel-generator.active {
+  display: block !important;
+}
+body.landscape .generator-layout {
+  height: auto !important;
+  max-height: 100%;
+  align-items: start;
+}
+body.landscape .generator-card,
+body.landscape .tip-card {
+  height: auto !important;
+}
