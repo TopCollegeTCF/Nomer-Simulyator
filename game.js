@@ -10,12 +10,13 @@ const rarityColors = {"Обычный":"#aab3bf","Необычный":"#64c8ff",
 /* Экономика: продажа машины ВСЕГДА дешевле покупки.
    Редкий номер на машине даёт бонус к цене продажи. */
 const carCatalog = [
- {id:"sedan", name:"Городской седан", desc:"Надёжный первый автомобиль", price:18000, resale:11000, art:"images/car-sedan.svg"},
- {id:"hatch", name:"Компактный хэтчбек", desc:"Манёвренный и экономичный", price:26500, resale:16000, art:"images/car-hatch.svg"},
- {id:"suv",   name:"Внедорожник", desc:"Мощный автомобиль для города", price:52000, resale:32000, art:"images/car-suv.svg"},
- {id:"sport", name:"Спорткар", desc:"Яркий стиль и высокая цена", price:95000, resale:58000, art:"images/car-sport.svg"},
- {id:"lux",   name:"Премиум-седан", desc:"Комфорт и статус", price:145000, resale:90000, art:"images/car-lux.svg"},
- {id:"super", name:"Суперкар", desc:"Мечта коллекционера", price:260000, resale:160000, art:"images/car-super.svg"}
+ {id:"sedan", name:"Городской седан", desc:"Надёжный первый автомобиль", price:18000, resale:11000, art:"images/1.png"},
+ {id:"hatch", name:"Компактный хэтчбек", desc:"Манёвренный и экономичный", price:26500, resale:16000, art:"images/3.png"},
+ {id:"suv",   name:"Внедорожник", desc:"Мощный автомобиль для города", price:52000, resale:32000, art:"images/2.png"},
+ {id:"sport", name:"Спорткар", desc:"Яркий стиль и высокая цена", price:95000, resale:58000, art:"images/6.png"},
+ {id:"lux",   name:"Премиум-седан", desc:"Комфорт и статус", price:145000, resale:90000, art:"images/5.png"},
+ {id:"super", name:"Суперкар", desc:"Мечта коллекционера", price:260000, resale:160000, art:"images/7.png"},
+ {id:"super", name:"Гоночный-суперкар", desc:"Награда для ярого гонщика", price:360000, resale:260000, art:"images/9.png"}
 ];
 
 const defaultState = {money:50000,plates:[],safe:[],cars:[],generated:0,best:0,nextId:1};
