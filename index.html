@@ -12,6 +12,31 @@
   <div class="app-shell">
     <header class="topbar">
       <div class="brand"><span class="brand-mark">A</span><div><b>АВТОНОМЕР</b><small>ТВОЯ АВТОИМПЕРИЯ</small></div></div>
+
+      <div class="boost-bar" id="boost-bar">
+        <button class="boost-btn boost-luck" id="boost-luck" type="button" title="x2 шанс дропа на 5 минут">
+          <span class="boost-ring"><span class="boost-ico">🎲</span></span>
+          <span class="boost-body">
+            <span class="boost-txt">x2 дроп</span>
+            <span class="boost-timer" id="boost-luck-timer">5:00</span>
+          </span>
+        </button>
+        <button class="boost-btn boost-cash" id="boost-cash" type="button" title="+50 000 ₽ за просмотр рекламы">
+          <span class="boost-ring"><span class="boost-ico">💰</span></span>
+          <span class="boost-body">
+            <span class="boost-txt">+50K ₽</span>
+            <span class="boost-sub">награда</span>
+          </span>
+        </button>
+        <button class="boost-btn boost-sell" id="boost-sell" type="button" title="+50% к продаже номеров на 5 минут">
+          <span class="boost-ring"><span class="boost-ico">📈</span></span>
+          <span class="boost-body">
+            <span class="boost-txt">+50%</span>
+            <span class="boost-timer" id="boost-sell-timer">5:00</span>
+          </span>
+        </button>
+      </div>
+
       <div class="wallet"><span>₽</span><strong id="money">50 000</strong></div>
     </header>
 
@@ -25,23 +50,66 @@
       </nav>
 
       <section class="panel active" id="panel-generator">
-        <div class="section-heading"><div><span class="eyebrow">СЛУЧАЙНАЯ ГЕНЕРАЦИЯ</span><h2>Испытай удачу</h2></div><div class="chip">Стоимость попытки: бесплатно</div></div>
-        <div class="generator-layout">
+        <div class="generator-wrap">
           <div class="generator-card">
             <div class="plate-label">РОССИЙСКАЯ ФЕДЕРАЦИЯ</div>
-            <div class="plate" id="current-plate">
-              <span class="plate-main"><b>А</b><b>000</b><b>АА</b></span>
-              <span class="plate-region"><b>777</b><small>RUS <span class="flag">▰</span></small></span>
+        
+            <div class="plate-stage">
+              <div class="plate" id="current-plate">
+                <span class="plate-main"><b>А</b><b>000</b><b>АА</b></span>
+                <span class="plate-region"><b>777</b><small>RUS <span class="flag">▰</span></small></span>
+              </div>
             </div>
-            <div class="rarity-line"><span id="rarity-dot"></span><strong id="rarity-name">Обычный номер</strong><b id="plate-price">≈ 500 ₽</b></div>
-            <p class="rarity-reason" id="rarity-reason">Нет повторяющихся или особых сочетаний — стандартный номер.</p>
+        
+            <div class="rarity-line">
+              <span id="rarity-dot"></span>
+              <strong id="rarity-name">Обычный номер</strong>
+              <b id="plate-price">≈ 500 ₽</b>
+            </div>
+        
+            <div class="generator-stats">
+              <div class="stat-pill">
+                <strong id="generated-total">0</strong>
+                <span>Сгенерировано</span>
+              </div>
+              <div class="stat-pill stat-best">
+                <strong id="best-rarity">—</strong>
+                <span>Лучшая находка</span>
+              </div>
+            </div>
+        
             <button class="primary-btn" id="generate-btn">✦ СГЕНЕРИРОВАТЬ НОМЕР</button>
-            <p class="hint">Каждая генерация — новый случайный номер и регион.</p>
           </div>
-          <aside class="tip-card">
-            <div class="tip-icon">🏆</div><h3>Охота за редкостью</h3>
-            <p>Ищи повторяющиеся цифры, зеркальные комбинации и красивые серии букв. Такие номера ценятся выше.</p>
-            <div class="mini-stats"><div><strong id="generated-total">0</strong><span>Сгенерировано</span></div><div><strong id="best-rarity">—</strong><span>Лучшая находка</span></div></div>
+        
+          <!-- ===== Декоративная панель «Радар редкости» ===== -->
+          <aside class="radar-card" aria-hidden="true">
+            <div class="radar-head">
+              <span class="radar-title">РАДАР РЕДКОСТИ</span>
+              <span class="radar-live"><i></i>LIVE</span>
+            </div>
+        
+            <div class="radar-scope">
+              <div class="radar-ring r1"></div>
+              <div class="radar-ring r2"></div>
+              <div class="radar-ring r3"></div>
+              <div class="radar-sweep"></div>
+              <div class="radar-cross"></div>
+              <div class="radar-blip b1"></div>
+              <div class="radar-blip b2"></div>
+              <div class="radar-blip b3"></div>
+              <div class="radar-center"></div>
+            </div>
+        
+            <div class="radar-feed" id="radar-feed">
+              <div class="radar-feed-empty">Сканируем эфир…</div>
+            </div>
+        
+            <div class="radar-legend">
+              <span><i class="dot common"></i>обычный</span>
+              <span><i class="dot rare"></i>редкий</span>
+              <span><i class="dot epic"></i>эпик</span>
+              <span><i class="dot legendary"></i>легенда</span>
+            </div>
           </aside>
         </div>
       </section>
@@ -59,18 +127,18 @@
       <section class="panel" id="panel-storage">
         <div class="section-heading"><div><span class="eyebrow">ТВОЯ КОЛЛЕКЦИЯ</span><h2>Хранилище номеров</h2></div><div class="storage-tools"><label class="sort-control">Сортировка <select id="storage-sort" aria-label="Сортировка номеров"><option value="default">По умолчанию</option><option value="price-asc">Цена: сначала дешёвые</option><option value="price-desc">Цена: сначала дорогие</option><option value="rarity-desc">Редкость: сначала лучшие</option><option value="rarity-asc">Редкость: сначала обычные</option><option value="name-asc">По алфавиту: А—Я</option><option value="name-desc">По алфавиту: Я—А</option><option value="date-desc">Сначала новые</option><option value="date-asc">Сначала старые</option></select></label><div class="chip">Номера можно продавать</div><button class="sell-all-btn" id="sell-all-btn">УДАЛИТЬ ВСЁ</button></div></div>
         <div class="empty-state" id="storage-empty"><div>🗃️</div><h3>Пока здесь пусто</h3><p>Сгенерируй первый номер — он появится здесь автоматически.</p></div>
-        <div class="plate-grid" id="storage-list"></div>
+        <div class="plate-grid scroll-area" id="storage-list"></div>
       </section>
 
       <section class="panel" id="panel-safe">
         <div class="section-heading"><div><span class="eyebrow">ЛИЧНАЯ КОЛЛЕКЦИЯ</span><h2>Сейф</h2></div><div class="chip safe-chip">🔒 Защищено от продажи</div></div>
         <div class="safe-banner"><span>🔐</span><div><b>Здесь хранятся самые ценные номера</b><p>Номер в сейфе нельзя случайно продать. Чтобы вернуть его, нажми «В хранилище».</p></div></div>
         <div class="empty-state" id="safe-empty"><div>🔒</div><h3>Сейф пока пуст</h3><p>Перемести сюда номера, которые хочешь сохранить.</p></div>
-        <div class="plate-grid" id="safe-list"></div>
+        <div class="plate-grid scroll-area" id="safe-list"></div>
       </section>
     </main>
   </div>
-  
+
   <div class="plate-picker" id="plate-picker" aria-hidden="true">
     <div class="picker-backdrop" id="picker-backdrop"></div>
     <div class="picker-sheet" role="dialog" aria-modal="true" aria-labelledby="picker-title">
